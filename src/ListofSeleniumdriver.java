@@ -1,23 +1,79 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.apache.commons.io.FileUtils;
+
+import org.openqa.selenium.TakesScreenshot;
 
 public class ListofSeleniumdriver {
 
 	
 	
 	WebDriver driver;
+	
+	
+	
+	
+	
+public void launchBrower() {
+		
+		System.setProperty("webdriver.chrome.driver", "/Users/rayculp/Documents/Selenium/chromedriver");
+		driver =new ChromeDriver();
+		driver.get("https://www.google.com/");
+		
+		/*
+		 * Ways to find elements
+		 * By.ClassName
+		 *   .CssSelector
+		 *   .Id
+		 *   .Name
+		 *   .XPath
+		 * 
+		 * 
+		 */
+		//WebElement element = driver.findElement(By.name("q"));
+		WebElement element = driver.findElement(By.cssSelector("input[name='q']"));
+		//WebElement element = driver.findElement(By.cssSelector("input[id='fakebox']"));
+		element.sendKeys("Cheese!");
+		element.submit();
+		
+		
+		
+		TakesScreenshot scrShot = ((TakesScreenshot)driver);
+		
+		File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
+		
+		File destFile = new File("/Users/rayculp/Desktop/RayWorkspace/SeleniumFirstProject/pic.jpg");
+		try {
+			FileUtils.copyFile(srcFile, destFile);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		driver.quit();
+		//driver.close();
+		
+	}
+	
+	
+	
+	
+	
 	
 	
 	public void form() {
@@ -220,31 +276,7 @@ public class ListofSeleniumdriver {
 		
 	}
 	
-public void launchBrower() {
-		
-		System.setProperty("webdriver.chrome.driver", "/Users/rayculp/Documents/Selenium/chromedriver");
-		driver =new ChromeDriver();
-		driver.get("https://www.google.com/");
-		
-		/*
-		 * Ways to find elements
-		 * By.ClassName
-		 *   .CssSelector
-		 *   .Id
-		 *   .Name
-		 *   .XPath
-		 * 
-		 * 
-		 */
-		//WebElement element = driver.findElement(By.name("q"));
-		WebElement element = driver.findElement(By.cssSelector("input[name='q']"));
-		//WebElement element = driver.findElement(By.cssSelector("input[id='fakebox']"));
-		element.sendKeys("Cheese!");
-		element.submit();
-		driver.quit();
-		
-	}
-	
+
 public void launchFormy() {
 		
 		System.setProperty("webdriver.chrome.driver", "/Users/rayculp/Documents/Selenium/chromedriver");

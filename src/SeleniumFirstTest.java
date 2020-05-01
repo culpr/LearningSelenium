@@ -12,21 +12,11 @@ public class SeleniumFirstTest {
 public static void main(String[] args) {
 		
 		
-		
-	ListofSeleniumdriver st = new ListofSeleniumdriver(); 
-		//st.launchBrower();
-		//st.launchFormy();
-		//st.Formyauto();// use implicitlyWait over thread sleep
-		//st.launchscroll();
-		//st.launchswitch2();
-		//st.launchmodal();
-		//st.launchdrag();
-		//st.RadioButton();
-			//st.CheckBox();
-	//st.datePicker();
-	//st.dropDown();
-	//st.fileUpLoad();
-	//st.form();
+	ListofSeleniumdriver ls = new ListofSeleniumdriver();
+	ls.launchBrower();
+	
+	
+	
 	
 	
 	
